@@ -43,15 +43,16 @@ namespace AuthenticationJWT
                         {
                             //Controle si la audiencia será validada durante la validación del token.
                             //Asegurarse de que el destinatario del token esté autorizado para recibirlo.
-                            ValidateAudience = false,
+                            ValidateAudience = true,
                             //Controle si el emisor será validado durante la validación del token.
                             //Validar el servidorr que creó ese token
-                            ValidateIssuer = false,
+                            ValidateIssuer = true,
                             //Verifica que la clave utilizada para firmar el token entrante sea parte de una lista de claves confiables.
                             ValidateIssuerSigningKey = true,
                             //Comprueba que el token no esté caducado y que la clave de firma del emisor sea válida.
                             ValidateLifetime = false,
-                            ValidAudience = Configuration["Jwt:Audience"],
+                            ValidAudience = Configuration["Jwt:Issuer"],
+                            
                             ValidIssuer = Configuration["Jwt:Issuer"],
                             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                         };

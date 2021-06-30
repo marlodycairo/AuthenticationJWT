@@ -54,11 +54,12 @@ namespace AuthenticationJWT.Controllers
             var claims = new[]
             {
                 new Claim(ClaimTypes.Email, userInfo.Email),
+                new Claim(JwtRegisteredClaimNames.Iss, "https://localhost:44330/login/"),
                 new Claim(JwtRegisteredClaimNames.Sub, userInfo.Email),
-                new Claim(JwtRegisteredClaimNames.Email, userInfo.Email)
-                //new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
-            var token = new JwtSecurityToken(config["Jwt.Issuer"], config["Jwt:Audience"], claims, expires: DateTime.Now.AddMinutes(120), signingCredentials: credential);
+            var token = new JwtSecurityToken(config["Jwt.Issuer"], config["Jwt:Issuer"], claims, expires: DateTime.Now.AddMinutes(120), signingCredentials: credential);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
