@@ -14,5 +14,7 @@ namespace AuthenticationJWT.Context
         }
 
         public DbSet<Usuarios> Users { get; set; }
+        public DbSet<RolViewModel> Rol { get; set; }
+        public DbSet<UsuarioRol> UsuarioRol { get; set; }
     }
 }

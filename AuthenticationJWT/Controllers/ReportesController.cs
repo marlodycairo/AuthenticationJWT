@@ -13,7 +13,7 @@ namespace AuthenticationJWT.Controllers
     [ApiController]
     public class ReportesController : ControllerBase
     {
-        [Authorize]
+        [Authorize()]
         [HttpGet]
         public ActionResult<IEnumerable<string>> GetAllReportes()
         {

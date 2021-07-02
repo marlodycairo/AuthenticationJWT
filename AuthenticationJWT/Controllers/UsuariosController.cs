@@ -1,6 +1,7 @@
 ﻿using AuthenticationJWT.Context;
 using AuthenticationJWT.Encryptado;
 using AuthenticationJWT.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ namespace AuthenticationJWT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "administrador")]
     public class UsuariosController : ControllerBase
     {
         private readonly ApplicationDbContext context;

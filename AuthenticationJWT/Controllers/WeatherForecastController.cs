@@ -24,8 +24,8 @@ namespace AuthenticationJWT.Controllers
             _logger = logger;
         }
 
-        [Authorize]
         [HttpGet]
+        [Authorize(Roles = "supervisor, administrador")]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
